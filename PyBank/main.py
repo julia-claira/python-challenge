@@ -1,6 +1,7 @@
 #----import needed modules
 import os
 import csv
+import panda as pd
 
 #-----open the file with the data
 csvpath = os.path.join("Resources", "budget_data.csv")
@@ -21,6 +22,7 @@ with open(csvpath, 'r') as csvfile:
     prevProfit=0.00 #temporarily holds the previous profit or loss for comparison
     startValue =0.00 #the starting value in the data set
     finalValue =0.00 #the final value of the data set
+    changes=0.00 #adds the changes from month to month
    
     #----analyzes the data set-------------------------
     for row in csvreader:
@@ -38,11 +40,23 @@ with open(csvpath, 'r') as csvfile:
             
         if (totalMonths ==1):
             startValue=float(row[1]) #sets the beginning value of data set
+         
+        #there was a debate on how best to find the average change. I did it two ways and got the same result. I left the below line codes in just in case--------------------------
         
+        #if (totalMonths !=1):
+            #changes=changes+float(row[1])-prevProfit
+        #else:
+            #changes=0
+            
+        #---------------------------------
+            
         prevProfit=float(row[1])#stores the current value so it can be compared
     
     finalValue=float(row[1]) #sets the final value of the data set
+    
     averageChange=round((finalValue-startValue)/(totalMonths-1),2)
+    #changes=changes/(totalMonths-1)
+    
     totalProfits=round(totalProfits,2)
     
     #----outputs the final results
@@ -55,4 +69,6 @@ with open(csvpath, 'r') as csvfile:
     print (f"Greatest Increase in Profits: {greatestIncMonth} (${greatestInc:,.2f})")
     print (f"Greatest Decrease in Profits: {greatestDecMonth} (${greatestDec:,.2f})")
     print()
+    
+        #----outputs the final results to text
 
