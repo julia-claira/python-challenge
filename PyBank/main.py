@@ -70,7 +70,7 @@ print (f"Greatest Decrease in Profits: {greatestDecMonth} (${greatestDec:,.2f})"
 print()
     
 #----outputs the final results to a text file
-my_output_path = os.path.join("Resources","myPyBank_output.txt")
+my_output_path = os.path.join("analysis","myPyBank_output.txt")
 
 outF = open(my_output_path,"w")
 outF.write("Financial Analysis\n")

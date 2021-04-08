@@ -35,7 +35,7 @@ for i, candidate in enumerate(myCandidate["Name"]):#outputs candidate results
 print()
     
 #----outputs the final results to a text file--------------------
-my_output_path = os.path.join("Resources","myPyPoll_output.txt")
+my_output_path = os.path.join("analysis","myPyPoll_output.txt")
 
 outF = open(my_output_path,"w")
 outF.write("Election Results\n")
