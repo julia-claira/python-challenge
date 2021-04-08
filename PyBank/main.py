@@ -1,7 +1,6 @@
 #----import needed modules
 import os
 import csv
-import panda as pd
 
 #-----open the file with the data
 csvpath = os.path.join("Resources", "budget_data.csv")
@@ -59,16 +58,27 @@ with open(csvpath, 'r') as csvfile:
     
     totalProfits=round(totalProfits,2)
     
-    #----outputs the final results
-    print()
-    print ("Financial Analysis")
-    print("---------------------------")
-    print (f"Total Months: {totalMonths}")
-    print (f"Total: ${totalProfits:,.2f}")
-    print (f"Average Change: ${averageChange:,.2f}")
-    print (f"Greatest Increase in Profits: {greatestIncMonth} (${greatestInc:,.2f})")
-    print (f"Greatest Decrease in Profits: {greatestDecMonth} (${greatestDec:,.2f})")
-    print()
+#----outputs the final results
+print()
+print ("Financial Analysis")
+print("---------------------------")
+print (f"Total Months: {totalMonths}")
+print (f"Total: ${totalProfits:,.2f}")
+print (f"Average Change: ${averageChange:,.2f}")
+print (f"Greatest Increase in Profits: {greatestIncMonth} (${greatestInc:,.2f})")
+print (f"Greatest Decrease in Profits: {greatestDecMonth} (${greatestDec:,.2f})")
+print()
     
-        #----outputs the final results to text
+#----outputs the final results to a text file
+my_output_path = os.path.join("Resources","myPyBank_output.txt")
+
+outF = open(my_output_path,"w")
+outF.write("Financial Analysis\n")
+outF.write("---------------------------\n")
+outF.write(f"Total Months: {totalMonths}\n")
+outF.write(f"Total: ${totalProfits:,.2f}\n")
+outF.write(f"Average Change: ${averageChange:,.2f}\n")
+outF.write(f"Greatest Increase in Profits: {greatestIncMonth} (${greatestInc:,.2f})\n")
+outF.write(f"Greatest Decrease in Profits: {greatestDecMonth} (${greatestDec:,.2f})\n")
+outF.close()
 
